@@ -1,0 +1,2 @@
+python-hwpx>=6.9  # HWP/HWPX 읽기·쓰기 (https://github.com/airmang/python-hwpx)
+olefile>=0.47     # tools/hwp_to_text.py

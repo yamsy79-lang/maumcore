@@ -1,0 +1,27 @@
+name: 라디오 원고 HWP 생성
+
+on:
+  push:
+    paths:
+      - "radio_ai/episodes/**"
+      - "radio_ai/template/**"
+      - "tools/render_script.py"
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: 원고 렌더링 (연락처는 저장소 Secret RADIO_CONTACT 에서)
+        env:
+          RADIO_CONTACT: ${{ secrets.RADIO_CONTACT }}
+        run: python tools/render_script.py radio_ai/episodes/*.md --out output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: radio-scripts-hwp
+          path: output/*.hwp*
