@@ -16,6 +16,7 @@
    → `python tools/hwp_to_text.py "output/알아두면 쓸모있는 AI_YYMMDD.hwp"` 로 내용·분량 확인.
 5. **기록**: curriculum.yaml 의 해당 회차 `status: done`. `output/` 은 커밋하지 않는다(.gitignore).
    epNN.md 와 curriculum.yaml 을 커밋·푸시한다.
+   curriculum.yaml 의 주제·기능을 바꾼 주에는 `python tools/render_plan.py` 로 전체 계획서도 새로 만들어 함께 전달한다.
 6. **전달**: 생성한 .hwp 와 예비본 .hwpx 를 첨부해 담당자 메일로 발송.
    제목 `[알아두면 쓸모있는 AI] N회차 원고 (MM/DD 방송) - 제목`,
    본문에 회차 요약 3줄 + 제작메모(준비물·팩트체크 출처·주의사항) + 다음 주 예고.

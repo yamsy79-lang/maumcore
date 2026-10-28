@@ -13,12 +13,15 @@
 | `radio_ai/episodes/epNN.md` | 회차별 원고 소스 |
 | `radio_ai/template/header_template.hwp` | 1회차 샘플에서 머리말만 남긴 서식 템플릿 (연락처는 자리표시자) |
 | `tools/render_script.py` | 원고 소스 → `.hwp` (샘플의 문단·글자 모양 그대로) |
+| `tools/render_plan.py` | curriculum.yaml → 6개월 전체 계획서 `.hwp` |
 | `tools/hwp_to_text.py` | `.hwp` → 텍스트 (검수용) |
 
 ```bash
 pip install -r requirements.txt
 python tools/render_script.py radio_ai/episodes/ep02.md --contact 010-0000-0000
 # → output/알아두면 쓸모있는 AI_261030.hwp
+python tools/render_plan.py
+# → output/알아두면 쓸모있는 AI_전체계획서.hwp
 ```
 
 - 강사 연락처는 공개 저장소에 올리지 않습니다. `--contact` 또는 환경변수 `RADIO_CONTACT` 로 넣습니다.
