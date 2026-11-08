@@ -72,7 +72,7 @@ def _blank(doc, para_id=PARA_BODY, char_id=CHAR_BODY):
     _para(doc, para_id, [("", char_id)])
 
 
-def render(md_path, out_dir, contact=""):
+def render(md_path, out_dir, contact="", hwpx_copy=False):
     meta, sections = parse(md_path)
     doc = HwpxDocument.open(TEMPLATE)
     for p in doc.paragraphs:
@@ -125,8 +125,9 @@ def render(md_path, out_dir, contact=""):
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{PROGRAM_TITLE}_{stamp}.hwp"
     doc.save_to_path(out_path)
-    # 예비본: .hwp 가 열리지 않을 때를 대비한 한글 표준(OWPML) 형식
-    doc.save_to_path(out_path.with_suffix(".hwpx"))
+    if hwpx_copy:
+        # 예비본: .hwp 가 열리지 않을 때를 대비한 한글 표준(OWPML) 형식
+        doc.save_to_path(out_path.with_suffix(".hwpx"))
     return out_path
 
 
@@ -135,9 +136,10 @@ def main():
     ap.add_argument("episodes", nargs="+", help="radio_ai/episodes/epNN.md")
     ap.add_argument("--out", default=str(ROOT / "output"))
     ap.add_argument("--contact", default=os.environ.get("RADIO_CONTACT", ""))
+    ap.add_argument("--hwpx", action="store_true", help="예비본 .hwpx 도 함께 저장")
     args = ap.parse_args()
     for md in args.episodes:
-        print(render(md, args.out, args.contact))
+        print(render(md, args.out, args.contact, args.hwpx))
 
 
 if __name__ == "__main__":
