@@ -14,7 +14,7 @@
 3. **원고 작성**: `radio_ai/STYLE_GUIDE.md` 0절(방향)을 최우선으로, 2~3-4절을 지키고 `radio_ai/episodes/ep04.md`(새 방향 기준 원고)와 `ep01.md`(형식 기준)를 참고해
    `radio_ai/episodes/epNN.md` 작성 (본문 1,800~2,300자, 1~3회 패턴: 질문 7개·실제 시연 3개·숙제 1개, 주제 하나·그 회차 idea 하나·소식 하나, 제작메모 포함). 구성은 ep01~03 패턴을 따르고, 말투·시연 표기는 ep04 를 따른다(ep02·03 의 정의→비유→세 마디 표어 문체는 쓰지 않는다).
    직전 회차 원고(epNN-1.md)를 끝까지 읽고 그 숙제·핵심 팁을 질문1에서 이어받으며, 오늘 팁은 거기서 한 걸음 더 나간다.
-   진행자(30대 후반~40대 초반 여성)의 경험은 나이에 맞게, 신중년 경험은 '어머님(부모님)' 이야기로 쓴다. 제작메모에 다음 주 예고를 적는다.
+   진행자는 개인·가족 이야기를 하지 않고 공통의 대상(어르신들, 청취자분들)으로 말한다(상황극 역할만 예외). 제작메모에 다음 주 예고를 적는다.
 4. **HWP 생성**: `pip install -r requirements.txt` 후
    `python tools/render_script.py radio_ai/episodes/epNN.md --contact <강사 연락처> --out output`
    → `python tools/hwp_to_text.py "output/알아두면 쓸모있는 AI_YYMMDD.hwp"` 로 내용·분량 확인.
